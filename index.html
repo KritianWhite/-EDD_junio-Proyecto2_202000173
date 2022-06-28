@@ -20,7 +20,13 @@
 
     <title>Document</title>
 </head>
-
+<style>
+    #arbol-AVL{
+        width: 1000px;
+        height: 1000px;
+        background-color: bisque;
+    }
+</style>
 <body>
 
     <!-- Area para el login-->
@@ -200,6 +206,8 @@
 
     </div>
 
+    <div id="arbol-AVL"></div>
+
     <!-- Area para el usuario -->
     <div id="usuario" style="display: none;"></div>
 
@@ -219,7 +227,14 @@
         crossorigin="anonymous"></script>
 
     <!-- importación de los archivos de la carpeta de JAvaScript -->
+    <script type="module" src="./JavaScript/Carga masiva.js"></script>
     <script src="./JavaScript/Login.js"></script>
+
+
+    <!-- importaciones del d3 graphviz -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.min.js"></script>
 
 </body>
 
