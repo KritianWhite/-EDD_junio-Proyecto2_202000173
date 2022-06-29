@@ -1,7 +1,7 @@
 /* clases personalizadas por mi */
 .titulo-personalizado {
-    font-family: cursive;
-    text-align: center;
+  font-family: cursive;
+  text-align: center;
 }
 
 /* 
@@ -11,20 +11,20 @@ Estilos para el login
 */
 .divider:after,
 .divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }
 
 .h-custom {
-    height: calc(100% - 73px);
+  height: calc(100% - 73px);
 }
 
 @media (max-width: 450px) {
-    .h-custom {
-        height: 100%;
-    }
+  .h-custom {
+    height: 100%;
+  }
 }
 
 /*
@@ -34,7 +34,7 @@ Estilos para el administrador
 */
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-.pricing-table{
+.pricing-table {
   background-color: #eee;
   font-family: 'Montserrat', sans-serif;
 }
@@ -42,7 +42,7 @@ Estilos para el administrador
 .pricing-table .block-heading {
   padding-top: 50px;
   margin-bottom: 40px;
-  text-align: center; 
+  text-align: center;
 }
 
 .pricing-table .block-heading h2 {
@@ -53,13 +53,13 @@ Estilos para el administrador
   text-align: center;
   max-width: 420px;
   margin: auto;
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 .pricing-table .heading {
   text-align: center;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .pricing-table .item {
@@ -68,15 +68,15 @@ Estilos para el administrador
   border-top: 2px solid #5ea4f3;
   padding: 30px;
   overflow: hidden;
-  position: relative; 
+  position: relative;
 }
 
 .pricing-table .col-md-5:not(:last-child) .item {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 .pricing-table .item button {
-  font-weight: 600; 
+  font-weight: 600;
 }
 
 .pricing-table .ribbon {
@@ -92,34 +92,46 @@ Estilos para el administrador
   position: absolute;
   right: -42px;
   top: 20px;
-  padding-top: 7px; 
+  padding-top: 7px;
 }
 
 .pricing-table .item p {
   text-align: center;
   margin-top: 20px;
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 .pricing-table .features .feature {
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 .pricing-table .features h4 {
   text-align: center;
   font-size: 18px;
-  padding: 5px; 
+  padding: 5px;
 }
 
 .pricing-table .price h4 {
   margin: 15px 0;
   font-size: 45px;
   text-align: center;
-  color: #2288f9; 
+  color: #2288f9;
 }
 
 .pricing-table .buy-now button {
   text-align: center;
   margin: auto;
   font-weight: 600;
-  padding: 9px 0; 
+  padding: 9px 0;
+}
+
+
+
+/* Estilos para mostrar el grafo de peliculas (Arbol AVL)*/
+.estilo-grafo {
+  margin: 0 auto;
+  width: 90%;
+  border-style: solid;
+  margin-bottom: 3%;
+  margin-top: 3%;
 }

@@ -16,17 +16,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-    <!-- -->
-
     <title>Document</title>
 </head>
+
 <style>
-    #arbol-AVL{
-        width: 1000px;
-        height: 1000px;
-        background-color: bisque;
+    #mostrar-grafo-abb{
+        margin: 0 auto;
     }
 </style>
+
 <body>
 
     <!-- Area para el login-->
@@ -92,13 +90,19 @@
                         <a class="nav-link" id="nav-carga-masiva-admin">Carga masiva</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="opcion1">Opcion 1</a>
+                        <a class="nav-link" id="grafo-peliculas">Grafo peliculas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="opcion2">Opcion 2</a>
+                        <a class="nav-link" id="grafo-clientes">Grafo clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="opcioin3">Opcion 3</a>
+                        <a class="nav-link" id="grafo-actores">Grafo actores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="grafo-categorias">Grafo categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-blockchain">Blockchain</a>
                     </li>
                 </ul>
             </div>
@@ -117,7 +121,8 @@
                 <div class="block-heading">
                     <br><br>
                     <h2>CARGA MASIVA</h2>
-                    <p>Usted a iniciado sesión como administrador. Acá podrá realizar la carga masiva de peliculas, clientes, actores y categorias.</p>
+                    <p>Usted a iniciado sesión como administrador. Acá podrá realizar la carga masiva de peliculas,
+                        clientes, actores y categorias.</p>
                 </div>
                 <div class="row justify-content-md-center">
                     <div class="col-md-5 col-lg-4">
@@ -137,7 +142,8 @@
                             <div class="price">
                                 <h4></h4>
                             </div>
-                            <button class="btn btn-block btn-outline-primary" type="button" id="btn-cargar-peliculas">Cargar peliculas</button>
+                            <button class="btn btn-block btn-outline-primary" type="button"
+                                id="btn-cargar-peliculas">Cargar peliculas</button>
                         </div>
                     </div>
                     <div class="col-md-5 col-lg-4">
@@ -157,7 +163,8 @@
                             <div class="price">
                                 <h4></h4>
                             </div>
-                            <button class="btn btn-block btn-primary" type="button" id="btn-cargar-clientes">Cargar clientes</button>
+                            <button class="btn btn-block btn-primary" type="button" id="btn-cargar-clientes">Cargar
+                                clientes</button>
                         </div>
                     </div>
                     <div class="col-md-5 col-lg-4">
@@ -177,7 +184,8 @@
                             <div class="price">
                                 <h4></h4>
                             </div>
-                            <button class="btn btn-block btn-outline-primary" type="button" id="btn-cargar-actores">Cargar actores</button>
+                            <button class="btn btn-block btn-outline-primary" type="button"
+                                id="btn-cargar-actores">Cargar actores</button>
                         </div>
                     </div>
                     <div class="col-md-5 col-lg-4">
@@ -197,7 +205,8 @@
                             <div class="price">
                                 <h4></h4>
                             </div>
-                            <button class="btn btn-block btn-primary" type="button" id="btn-cargar-categorias">Cargar categorias</button>
+                            <button class="btn btn-block btn-primary" type="button" id="btn-cargar-categorias">Cargar
+                                categorias</button>
                         </div>
                     </div>
                 </div>
@@ -206,7 +215,44 @@
 
     </div>
 
-    <div id="arbol-AVL"></div>
+    <div id="mostrar-grafo-avl" style="display: none;">
+        <!-- Peliculas -->
+        <div class="estilo-grafo" id="arbol-AVL">
+            <button type="button" class="btn btn-outline-success" id="btn-download-avl">Download</button>
+        </div>
+
+    </div>
+    
+    <div id="mostrar-grafo-linkedlist" style="display: none;">
+        <!-- Clientes-->
+        <div class="estilo-grafo" id="linkedlist">
+            <button type="button" class="btn btn-outline-success" id="btn-download-linkedlist">Download</button>
+        </div>
+
+    </div>
+
+
+    <div id="mostrar-grafo-abb" style="display: none;">
+        <!-- Actores -->
+        <div class="estilo-grafo" id="arbol-binario">
+            <button type="button" class="btn btn-outline-success" id="btn-download-abb">Download</button>
+        </div>
+
+    </div>
+
+    <div id="mostrar-grafo-hashtable" style="display: block;">
+        <!-- Categorias-->
+        <div class="estilo-grafo" id="hash-table">
+            <button type="button" class="btn btn-outline-success" id="btn-download-hashtable">Download</button>
+        </div>
+
+    </div>
+
+    <div id="mostrar-blockchain" style="display: none;">
+        <div id="blockchain"></div>
+
+    </div>
+
 
     <!-- Area para el usuario -->
     <div id="usuario" style="display: none;"></div>

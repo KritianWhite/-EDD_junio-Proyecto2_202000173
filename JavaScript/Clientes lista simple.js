@@ -205,7 +205,7 @@ export class listaSimple {
         cadena += "rankdir=LR \n";
 
         while (temporal !== null) {
-            cadena += "Node" + cont + "[label=\"" + temporal.dato.nombre+ " \n" + temporal.dato.apellido + "\"];\n";
+            cadena += "Node" + cont + "[label=\"Nombre: " + temporal.dato.nombre_completo+ " \n Usuario: " + temporal.dato.nombre_usuario + "\"];\n";
 
             if (temporal !== this.primero) {
                 cadena += "Node" + (cont - 1) + " -> " + "Node" + cont + ";\n";
@@ -218,6 +218,6 @@ export class listaSimple {
 
         cadena += "}";
         console.log(cadena);
-        d3.select("#lienzo").graphviz().width(1350).height(500).renderDot(cadena);
+        d3.select("#linkedlist").graphviz().width("100%").renderDot(cadena);
     }
 }

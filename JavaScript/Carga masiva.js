@@ -1,6 +1,7 @@
 import { Pelicula, AVL } from "./Peliculas arbol AVL.js";
 import { Cliente, listaSimple } from "./Clientes lista simple.js";
 import { Actor, ArbolABB } from "./Actores ABB.js";
+import { Categoria, HashTable } from "./Categorias hash table.js";
 
 
 /*
@@ -93,6 +94,7 @@ function cargarClientes() {
             e.telefono))
     })
     lista_Simple.recorrerLista()
+    lista_Simple.graficar()
 }
 
 
@@ -121,7 +123,7 @@ function abrirActoresJSON(evento) {
         let reader = new FileReader()
         reader.onload = function (e) {
             let contenido = e.target.result
-            contenidoClientesJSON = JSON.parse(contenido)
+            contenidoActoresJSOM = JSON.parse(contenido)
         }
         reader.readAsText(archivo)
     }
@@ -130,7 +132,58 @@ function abrirActoresJSON(evento) {
     }
 }
 function cargarActores(){
+    alert("Cargando actores...!")
     contenidoActoresJSOM.forEach(e => {
-        
+        abb.agregar(new Actor(e.dni,
+            e.nombre_actor,
+            e.correo,
+            e.descripcion))
     })
+    //abb.InOrden(abb.raiz)
+    abb.graficar(abb.raiz)
+}
+
+/**
+ * 
+ * 
+ *      CARGA DE CATEGORIAS
+ * 
+ * 
+ */
+
+var contenidoCategoriasJSON = []
+var hastable = new HashTable(20, 8)
+
+window.addEventListener("load", () =>{
+    document
+        .getElementById("fichero-categorias")
+        .addEventListener("change", abrirCategoriasJSON)
+})
+window.addEventListener("load", () => {
+    document
+        .getElementById("btn-cargar-categorias")
+        .addEventListener("click", cargarCategorias)
+})
+
+function abrirCategoriasJSON(evento){
+    let archivo = evento.target.files[0]
+    if (archivo) {
+        let reader = new FileReader()
+        reader.onload = function (e) {
+            let contenido = e.target.result
+            contenidoCategoriasJSON = JSON.parse(contenido)
+        }
+        reader.readAsText(archivo)
+    }
+    else {
+        alert("No se seleccionó ningún archivo")
+    }
+}
+function cargarCategorias(){
+    alert("Cargando categorias...!")
+    contenidoCategoriasJSON.forEach(e => {
+        //console.log(e.id_categoria, e.company)
+        hastable.insert(new Categoria(e.id_categoria, e.company))
+    })
+    hastable.graph()
 }

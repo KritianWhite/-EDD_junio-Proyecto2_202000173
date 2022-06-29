@@ -72,13 +72,13 @@ export class ArbolABB {
     }
 
     agregar(id, node = this.raiz) {
-        id = id.replace(/ /g, "_")
+        //*id  -> El objeto actor
         if (!node) {
-            this.raiz = new Nodo(id);
-            return;
+            this.raiz = new Nodo(id); //*Objeto actor
+            return;  
         }
 
-        if (id < node.id) {
+        if (id.dni < node.id.dni) {
             if (node.izquierda) {
                 return this.agregar(id, node.izquierda);
             }
@@ -127,7 +127,8 @@ export class ArbolABB {
         cadena += "node [shape = record, color=black , style=filled, fillcolor=gray93];\n";
         cadena += this.__graficadora(raiz);
         cadena += "} \n";
-        d3.select("#lienzo").graphviz().width(1350).height(500).renderDot(cadena);
+        console.log(cadena)
+        d3.select("#arbol-binario").graphviz().width("100%").renderDot(cadena);
     }
 
     __graficadora(root) {
@@ -135,17 +136,17 @@ export class ArbolABB {
         cadena = "";
 
         if (root.derecha === null && root.izquierda === null) {
-            cadena = "nodo" + root.id.toString() + "[label =\" " + root.id.toString().replace(/_/g, " ") + "\"]; \n";
+            cadena = "nodo" + root.id.dni.toString() + "[label =\"DNI: " + root.id.dni.toString() + "\\n" + root.id.nombre_actor.toString() + "\"]; \n";
         } else {
-            cadena = "nodo" + root.id.toString() + "[label =\"<C0>| " + root.id.toString().replace(/_/g, " ") + "|<C1> \"]; \n";
+            cadena = "nodo" + root.id.dni.toString() + "[label =\"<C0>|DNI: " + root.id.dni.toString()+ "\\n" + root.id.nombre_actor.toString() + "|<C1> \"]; \n";
         }
 
         if (root.izquierda !== null) {
-            cadena = cadena + this.__graficadora(root.izquierda) + "nodo" + root.id.toString() + ":C0->nodo" + root.izquierda.id.toString() + "\n";
+            cadena = cadena + this.__graficadora(root.izquierda) + "nodo" + root.id.dni.toString() + ":C0->nodo" + root.izquierda.id.dni.toString() + "\n";
         }
 
         if (root.derecha !== null) {
-            cadena = cadena + this.__graficadora(root.derecha) + "nodo" + root.id.toString() + ":C1->nodo" + root.derecha.id.toString() + "\n";
+            cadena = cadena + this.__graficadora(root.derecha) + "nodo" + root.id.dni.toString() + ":C1->nodo" + root.derecha.id.dni.toString() + "\n";
         }
         return cadena
     }
