@@ -246,3 +246,213 @@ export class AVL {
     return cadena;
   }
 }
+
+
+/**
+ * 
+ * 
+ *    LISTA SIMPLE PARA LOS ORDENAMIENTOS 
+ *    DE LOS LIBROS
+ * 
+ * 
+*/
+
+class NodoP {
+  constructor(dato) {
+    this.dato = dato
+    this.siguiente = null
+  }
+}
+
+export class listaSimpleP {
+  constructor() {
+    this.primero = null
+    this.ultimo = null
+  }
+
+  estavacia() {
+    return this.primero === null
+  }
+
+  agregarAlinicio(dato) {
+    if (this.estavacia()) {
+      this.primero = this.ultimo = new NodoP(dato)
+    } else {
+      let auxiliar = new NodoP(dato)
+      auxiliar.siguiente = this.primero
+      this.primero = auxiliar
+    }
+    //this.ordenamientoBurbuja_Ascendente()
+  }
+
+  agregarAlfinal(dato) {
+    if (this.estavacia()) {
+      this.primero = this.ultimo = new NodoP(dato)
+    } else {
+      let auxiliar = this.ultimo
+      this.ultimo = new NodoP(dato)
+      auxiliar.siguiente = this.ultimo
+    }
+    //this.ordenamientoBurbuja_Descendente()
+  }
+
+  recorrerLista() {
+    if (this.estavacia()) {
+      console.log("La lista esta vacia")
+    }
+    let auxiliar = this.primero
+    while (auxiliar != null) {
+      console.log(auxiliar.dato.toString())
+      auxiliar = auxiliar.siguiente
+    }
+  }
+
+  mostrarDatos(){
+    let nuevaPelicula = document.querySelector("#vista2-peliculas")
+    let newText = ""
+
+    if (this.estavacia()){
+      newText += `
+      <div class="table-responsive">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Información</th>
+                            <th scope="col">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Pelicula1</th>
+                            <td>Nostrud ut anim irure minim sint incididunt laboris eu. Cillum voluptate nulla do
+                                commodo ipsum id et reprehenderit velit aliquip. Occaecat culpa duis amet eu
+                                reprehenderit ea. Enim incididunt aute do ipsum do amet Lorem tempor. Tempor elit dolor
+                                pariatur eiusmod elit amet ad ex aliqua ex non cupidatat ut. Culpa laborum fugiat
+                                deserunt ipsum culpa est et eiusmod. Consectetur nisi mollit ex enim non excepteur ipsum
+                                reprehenderit deserunt dolore veniam eu sit eu.</td>
+                            <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-rounded   "> <span
+                                        class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span> Alquilar pelicula </button>
+                                <br>
+                                <p>Costo: Q 000.00</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      `
+    }
+    let auxiliar = this.primero
+    while (auxiliar !== null){
+      newText += `
+      <div class="table-responsive">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Información</th>
+                            <th scope="col">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">${auxiliar.dato.nombre_pelicula}</th>
+                            <td>${auxiliar.dato.descripcion}</td>
+                            <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-rounded   "> <span
+                                        class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span> Alquilar pelicula </button>
+                                <br>
+                                <p>Costo: Q ${auxiliar.dato.precio_Q}.00</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      `
+      auxiliar = auxiliar.siguiente
+    }
+    nuevaPelicula.innerHTML = newText
+
+  }
+
+  tamanio() {
+    var contador = 0
+    if (this.estavacia()) {
+      return 0
+    }
+    let auxiliar = this.primero
+    while (auxiliar != null) {
+      contador += 1
+      auxiliar = auxiliar.siguiente
+    }
+    console.log("Número de elementos de la lista: " + contador)
+    return contador
+  }
+
+  buscarDato(dato_) {
+    if (this.estavacia()) {
+      console.log("No hay elementos")
+    }
+    let auxiliar = this.primero
+    while (auxiliar != null) {
+      if (auxiliar.dato.nombre === dato_) {
+        console.log((auxiliar.dato.toString()) + ", nombre encontrado.")
+      }
+      auxiliar = auxiliar.siguiente
+    }
+    return dato_ + ", dato no encontrado"
+  }
+
+  ordenamientoBurbuja_Ascendente() {
+    let auxiliar
+    let actual = auxiliar = null
+    if (!this.estavacia()) {
+      actual = this.primero
+      while (actual.siguiente) {
+        auxiliar = actual.siguiente
+        while (auxiliar) {
+          if (auxiliar.dato.nombre_pelicula < actual.dato.nombre_pelicula) {
+            let temporal = actual.dato
+            actual.dato = auxiliar.dato
+            auxiliar.dato = temporal
+          }
+          auxiliar = auxiliar.siguiente
+        }
+        actual = actual.siguiente
+      }
+    } else {
+      console.log("No se encontraron elementos")
+    }
+  }
+
+  ordenamientoBurbuja_Descendente() {
+    let auxiliar
+    let actual = auxiliar = null
+    if (!this.estavacia()) {
+      actual = this.primero
+      while (actual.siguiente) {
+        auxiliar = actual.siguiente
+        while (auxiliar) {
+          if (auxiliar.dato.nombre_pelicula > actual.dato.nombre_pelicula) {
+            let temporal = actual.dato
+            actual.dato = auxiliar.dato
+            auxiliar.dato = temporal
+          }
+          auxiliar = auxiliar.siguiente
+        }
+        actual = actual.siguiente
+      }
+    } else {
+      console.log("No se encontraron elementos")
+    }
+  }
+}

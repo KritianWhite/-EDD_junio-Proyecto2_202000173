@@ -1,8 +1,11 @@
-import { Pelicula, AVL } from "./Peliculas arbol AVL.js";
+import { Pelicula, AVL, listaSimpleP } from "./Peliculas arbol AVL.js";
 import { Cliente, listaSimple } from "./Clientes lista simple.js";
 import { Actor, ArbolABB } from "./Actores ABB.js";
 import { Categoria, HashTable } from "./Categorias hash table.js";
 
+
+document.getElementById("btn-ordenar-ascendente").onclick = librosAscendente
+document.getElementById("btn-ordenar-descendente").onclick = librosDescendente
 
 /*
 
@@ -12,6 +15,7 @@ import { Categoria, HashTable } from "./Categorias hash table.js";
 
 var contenidoPeliculasJSON = []
 var avl = new AVL()
+var listaPelis = new listaSimpleP()
 
 window.addEventListener("load", () => {
     document
@@ -43,9 +47,22 @@ function cargarPeliculas() {
     alert("Cargando peliculas...!!")
     contenidoPeliculasJSON.forEach(e => {
         avl.insertar(e.id_pelicula, e.nombre_pelicula)
+        listaPelis.agregarAlfinal(new Pelicula(e.id_pelicula,
+            e.nombre_pelicula, 
+            e.descripcion, e.puntuacion_star,
+            e.precio_Q))
     })
     avl.graficar(avl.root)
-
+    //listaPelis.recorrerLista()
+    listaPelis.mostrarDatos()
+}
+function librosAscendente(){
+    listaPelis.ordenamientoBurbuja_Ascendente()
+    listaPelis.mostrarDatos()
+}
+function librosDescendente(){
+    listaPelis.ordenamientoBurbuja_Descendente()
+    listaPelis.mostrarDatos()
 }
 
 
@@ -102,6 +119,7 @@ function cargarClientes() {
 
     CARGA ACTORES
 
+    
 */
 var contenidoActoresJSOM = []
 var abb = new ArbolABB()

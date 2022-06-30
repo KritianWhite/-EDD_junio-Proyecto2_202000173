@@ -135,3 +135,24 @@ Estilos para el administrador
   margin-bottom: 3%;
   margin-top: 3%;
 }
+
+
+/*
+
+  Estilos para usuario
+
+*/
+
+#vista2-peliculas {
+  border-style: solid;
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.Titulo-peliculas {
+  margin-bottom: 3%;
+  margin-top: 3%;
+  text-align: center;
+}
