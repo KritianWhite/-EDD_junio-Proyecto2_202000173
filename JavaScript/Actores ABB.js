@@ -44,9 +44,8 @@ export class Actor {
         Descripcion: ${this._descripcion}
         `
     }
+
 }
-
-
 
 /*
 
@@ -71,25 +70,137 @@ export class ArbolABB {
         return this.raiz === null;
     }
 
-    agregar(id, node = this.raiz) {
-        //*id  -> El objeto actor
-        if (!node) {
-            this.raiz = new Nodo(id); //*Objeto actor
-            return;  
-        }
+    agregar(id, node = this.raiz) { //*id  -> El objeto actor
+        let temporal = this.buscarNodo(id.dni)
+        if (temporal === null) {
+            if (!node) {
+                this.raiz = new Nodo(id); //*Objeto actor
+                return;
+            }
 
-        if (id.dni < node.id.dni) {
-            if (node.izquierda) {
-                return this.agregar(id, node.izquierda);
+            if (id.dni < node.id.dni) {
+                if (node.izquierda) {
+                    return this.agregar(id, node.izquierda);
+                }
+                node.izquierda = new Nodo(id);
+                return;
+            } else {
+                if (node.derecha) {
+                    return this.agregar(id, node.derecha);
+                }
+                node.derecha = new Nodo(id);
+                return;
             }
-            node.izquierda = new Nodo(id);
-            return;
+
         } else {
-            if (node.derecha) {
-                return this.agregar(id, node.derecha);
+            return null
+        }
+    }
+
+    buscarNodo(d) {
+        let aux = this.raiz
+        if (aux === null) {
+            return null
+        }
+        while (aux.id.dni !== d) {
+            if (d < aux.id) {
+                aux = aux.izquierda;
+            } else {
+                aux = aux.derecha;
             }
-            node.derecha = new Nodo(id);
-            return;
+
+            if (aux === null) {
+                return null;
+            }
+        }
+        return aux
+    }
+
+    // Random para las imagenes
+    random(min, max) {
+        return Math.floor((Math.random() * (max - min + 1)) + min);
+    }
+
+
+    preOrden_Mostrar(node) {
+        let newText = ""
+        if (node !== null) {
+            newText += `
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-team">
+                            <div class="img-area">
+                                    <img src="./Img/image${this.random(1, 50)}.png" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="img-text">
+                                    <h4>${node.id.nombre_actor}</h4>
+                                    <h5>${node.id.descripcion}</h5>
+                                    </div>
+                                    </div>
+                        </div>
+                        
+                        `
+
+            if (node.izquierda !== null) {
+                newText += this.preOrden_Mostrar(node.izquierda)
+            }
+            if (node.derecha !== null) {
+                newText += this.preOrden_Mostrar(node.derecha)
+            }
+            return newText
+        }
+    }
+
+    inOrden_Mostrar(node) {
+        let newText = ""
+        if (node !== null) {
+            if (node.izquierda !== null) {
+                newText += this.inOrden_Mostrar(node.izquierda)
+            }
+            newText += `
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-team">
+                            <div class="img-area">
+                                    <img src="./Img/image${this.random(1, 50)}.png" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="img-text">
+                                    <h4>${node.id.nombre_actor}</h4>
+                                    <h5>${node.id.descripcion}</h5>
+                                    </div>
+                                    </div>
+                        </div>
+                        
+                        `
+            if (node.derecha !== null) {
+                newText += this.inOrden_Mostrar(node.derecha)
+            }
+            return newText
+        }
+    }
+
+    postOrden_Mostrar(node) {
+        let newText = ""
+        if (node !== null) {
+            if (node.izquierda !== null) {
+                newText += this.postOrden_Mostrar(node.izquierda)
+            }
+            if (node.derecha !== null) {
+                newText += this.postOrden_Mostrar(node.derecha)
+            }
+            newText += `
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-team">
+                            <div class="img-area">
+                                    <img src="./Img/image${this.random(1, 50)}.png" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="img-text">
+                                    <h4>${node.id.nombre_actor}</h4>
+                                    <h5>${node.id.descripcion}</h5>
+                                    </div>
+                                    </div>
+                        </div>
+                        
+                        `
+            return newText
         }
     }
 
@@ -97,12 +208,12 @@ export class ArbolABB {
         if (!node) {
             return;
         }
-        console.log(node.id);
+        console.log(node.id)
         this.preOrden(node.izquierda)
         this.preOrden(node.derecha)
     }
 
-    postOrden(node = this.root) {
+    postOrden(node = this.raiz) {
         if (!node) {
             return;
         }
@@ -121,6 +232,7 @@ export class ArbolABB {
     }
 
     graficar(raiz) {
+
         var cadena = '';
         cadena += "digraph G { \n"
         cadena += "rankdir=TB; \n";
@@ -128,7 +240,7 @@ export class ArbolABB {
         cadena += this.__graficadora(raiz);
         cadena += "} \n";
         console.log(cadena)
-        d3.select("#arbol-binario").graphviz().width("100%").renderDot(cadena);
+        d3.select("#arbol-abb").graphviz().width("100%").zoom(false).fit(true).renderDot(cadena);
     }
 
     __graficadora(root) {
@@ -138,7 +250,7 @@ export class ArbolABB {
         if (root.derecha === null && root.izquierda === null) {
             cadena = "nodo" + root.id.dni.toString() + "[label =\"DNI: " + root.id.dni.toString() + "\\n" + root.id.nombre_actor.toString() + "\"]; \n";
         } else {
-            cadena = "nodo" + root.id.dni.toString() + "[label =\"<C0>|DNI: " + root.id.dni.toString()+ "\\n" + root.id.nombre_actor.toString() + "|<C1> \"]; \n";
+            cadena = "nodo" + root.id.dni.toString() + "[label =\"<C0>|DNI: " + root.id.dni.toString() + "\\n" + root.id.nombre_actor.toString() + "|<C1> \"]; \n";
         }
 
         if (root.izquierda !== null) {

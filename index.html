@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="./Css/style.css">
 
+
+    <title>Moviecats</title>
     <!-- importación de bootstrap 5.0.2 utilizado para el login -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!--importación de bootstrap 4.0.0 utilizado para el div de administrador-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- importacion de bootstrap 4.7.0 para mostrar las categorias -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
 
     <!-- importacion de estilos para la tabla -->
     <!-- Font Awesome -->
@@ -23,7 +32,6 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
-    <title>Document</title>
 </head>
 
 <style>
@@ -35,7 +43,7 @@
 <body>
 
     <!-- Area para el login-->
-    <div id="login" style="display: none;">
+    <div id="login" style="display: block;">
 
         <section class="vh-100">
             <div class="container-fluid h-custom">
@@ -49,14 +57,14 @@
 
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control form-control-lg"
+                                <input type="email" id="usser" class="form-control form-control-lg"
                                     placeholder="Ingrese su nombre de usuario" />
                                 <label class="form-label" for="form3Example3">Nombre de usuario:</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-3">
-                                <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                <input type="password" id="password" class="form-control form-control-lg"
                                     placeholder="Ingrese su contraseña" />
                                 <label class="form-label" for="form3Example4">Contraseña</label>
                             </div>
@@ -64,7 +72,7 @@
                             <!-- Checkbox -->
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="check-box" />
                                     <label class="form-check-label" for="form2Example3">Administrador</label>
                                 </div>
                             </div>
@@ -84,7 +92,7 @@
     </div>
 
     <!-- Area para administrador -->
-    <div id="navbar-administrador" style="display: block;">
+    <div id="navbar-administrador" style="display: none;">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand">Administrador</a>
@@ -121,7 +129,7 @@
 
 
 
-    <div id="administrador" style="display: block;">
+    <div id="administrador" style="display: none;">
 
         <section class="pricing-table">
             <div class="container">
@@ -224,16 +232,37 @@
 
     <div id="mostrar-grafo-avl" style="display: none;">
         <!-- Peliculas -->
-        <div class="estilo-grafo" id="arbol-AVL">
-            <button type="button" class="btn btn-outline-success" id="btn-download-avl">Download</button>
+
+        <div class="estilo-grafo">
+            <div class="estilo-grafo2" id="descargar-AVL">
+                <div class="Titulos">
+                    <h1>PELICULAS - AVL</h1>
+                </div>
+                <div id="arbol-AVL"></div>
+                
+            </div>
+            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-avl">Download</button>
         </div>
 
     </div>
 
     <div id="mostrar-grafo-linkedlist" style="display: none;">
         <!-- Clientes-->
-        <div class="estilo-grafo" id="linkedlist">
-            <button type="button" class="btn btn-outline-success" id="btn-download-linkedlist">Download</button>
+
+        <div class="estilo-grafo">
+            <div class="estilo-grafo2">
+                <div class="Titulos">
+                    <h1>CLIENTES - LINKEDLIST</h1>
+                </div>
+                <div id="linkedlist"></div>
+            </div>
+            <div class="estilo-grafo2" id="descargar-linkedlist">
+                <div class="Titulos">
+                    <h1>CLIENTES - LINKEDLIST</h1>
+                </div>
+                <div id="linkedlist2"></div>
+            </div>
+            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-linkedlist">Download</button>
         </div>
 
     </div>
@@ -241,16 +270,29 @@
 
     <div id="mostrar-grafo-abb" style="display: none;">
         <!-- Actores -->
-        <div class="estilo-grafo" id="arbol-binario">
-            <button type="button" class="btn btn-outline-success" id="btn-download-abb">Download</button>
+        <div class="estilo-grafo">
+            <div class="estilo-grafo2" id="descargar-ABB">
+                <div class="Titulos">
+                    <h1>ACTORES - ABB</h1>
+                </div>
+                <div id="arbol-abb"></div>
+            </div>
+            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-abb">Download</button>
         </div>
 
     </div>
 
     <div id="mostrar-grafo-hashtable" style="display: none;">
         <!-- Categorias-->
-        <div class="estilo-grafo" id="hash-table">
-            <button type="button" class="btn btn-outline-success" id="btn-download-hashtable">Download</button>
+        <div class="estilo-grafo">
+            <div class="estilo-grafo2" id="descargar-HashTable">
+                <div class="Titulos">
+                    <h1>CATEGORIAS - HASHTABLE</h1>
+                </div>
+                <div id="hash-table"></div>
+            </div>
+
+            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-hashtable">Download</button>
         </div>
 
     </div>
@@ -263,7 +305,7 @@
 
     <!-- Area para el usuario -->
 
-    <div id="navbar-usuario" style="display: block;">
+    <div id="navbar-usuario" style="display: none;">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand">Usuario</a>
@@ -291,13 +333,15 @@
     </div>
 
 
-    <div id="usuario" style="display: block;">
-        <div class="Titulo-peliculas">
+    <div id="usuario" style="display: none;">
+        <div class="Titulos">
             <h1>MOVIECATS</h1>
-            <button type="button" class="btn btn-outline-danger btn-rounded   " id="btn-ordenar-ascendente" data-mdb-ripple-color="#000000"> Ordenar ascendentemente </button>
-            <button type="button" class="btn btn-outline-secondary btn-rounded   " id="btn-ordenar-descendente" data-mdb-ripple-color="#000000"> Ordenar descendente </button>
+            <button type="button" class="btn btn-outline-danger btn-rounded   " id="btn-ordenar-ascendente"
+                data-mdb-ripple-color="#000000"> Ordenar ascendentemente </button>
+            <button type="button" class="btn btn-outline-secondary btn-rounded   " id="btn-ordenar-descendente"
+                data-mdb-ripple-color="#000000"> Ordenar descendente </button>
         </div>
-        <div id="vista2-peliculas">
+        <div class="vistasx" id="vista2-peliculas">
             <div class="table-responsive">
                 <table class="table table-bordered ">
                     <thead>
@@ -310,13 +354,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">Pelicula1</th>
-                            <td>Nostrud ut anim irure minim sint incididunt laboris eu. Cillum voluptate nulla do
-                                commodo ipsum id et reprehenderit velit aliquip. Occaecat culpa duis amet eu
-                                reprehenderit ea. Enim incididunt aute do ipsum do amet Lorem tempor. Tempor elit dolor
-                                pariatur eiusmod elit amet ad ex aliqua ex non cupidatat ut. Culpa laborum fugiat
-                                deserunt ipsum culpa est et eiusmod. Consectetur nisi mollit ex enim non excepteur ipsum
-                                reprehenderit deserunt dolore veniam eu sit eu.</td>
+                            <th scope="row"></th>
+                            <td></td>
                             <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
                             </td>
                             <td>
@@ -334,7 +373,61 @@
 
     </div>
 
+    <div id="actores" style="display: none;">
+        <div class="Titulos">
+            <h1>ACTORES</h1>
+            <button type="button" class="btn btn-outline-danger btn-rounded   " id="btn-inorden"
+                data-mdb-ripple-color="#000000"> Ordenar (In orden) </button>
+            <button type="button" class="btn btn-outline-secondary btn-rounded   " id="btn-preorden"
+                data-mdb-ripple-color="#000000"> Ordenar (Pre orden) </button>
+            <button type="button" class="btn btn-outline-info btn-rounded   " id="btn-postorden"
+                data-mdb-ripple-color="#000000"> Ordenar (Post orden) </button>
+        </div>
+        <div class="vistasx" id="vista2-actores">
+            <div class="team-area">
+                <div class="container">
+                    <div class="row" id="actores2">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-team">
+                                <div class="img-area">
+                                    <img src="./Img/image1.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="img-text">
+                                    <h4>Nombre autor</h4>
+                                    <h5>About</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <div id="categorias" style="display: none;">
+
+        <div class="Titulos">
+            <h1>CATEGORIAS</h1>
+        </div>
+        <div class="vistasx" id="vista2-categorias">
+
+            <div class="container">
+                <div class="row" id="categoriaaass">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="our-team">
+                            <div class="pic">
+                                <img src="./Img/img1.png">
+                            </div>
+                            <h3 class="title">Categoria</h3>
+                            <span class="post">Llave</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 
@@ -351,7 +444,7 @@
 
     <!-- importación de los archivos de la carpeta de JAvaScript -->
     <script type="module" src="./JavaScript/Carga masiva.js"></script>
-    <script src="./JavaScript/Login.js"></script>
+    <script type="module" src="./JavaScript/main.js"></script>
 
 
     <!-- importaciones del d3 graphviz -->
@@ -361,6 +454,12 @@
 
     <!-- importacion scripts para las tablas -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+
+
+    <!-- importacion de scripts para descargar los grafos -->
+    <script src="https://superal.github.io/canvas2image/canvas2image.js "></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 

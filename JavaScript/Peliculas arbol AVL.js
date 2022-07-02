@@ -222,7 +222,7 @@ export class AVL {
       "node [shape = record, color=black , style=filled, fillcolor=gray93];\n";
     cadena += this.__graficadora(raiz);
     cadena += "} \n";
-    d3.select("#arbol-AVL").graphviz().width("100%").renderDot(cadena);
+    d3.select("#arbol-AVL").graphviz().width("100%").zoom(false).fit(true).renderDot(cadena);
   }
 
   __graficadora(root) {
@@ -307,11 +307,11 @@ export class listaSimpleP {
     }
   }
 
-  mostrarDatos(){
+  mostrarDatos() {
     let nuevaPelicula = document.querySelector("#vista2-peliculas")
     let newText = ""
 
-    if (this.estavacia()){
+    if (this.estavacia()) {
       newText += `
       <div class="table-responsive">
                 <table class="table table-bordered ">
@@ -325,13 +325,8 @@ export class listaSimpleP {
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">Pelicula1</th>
-                            <td>Nostrud ut anim irure minim sint incididunt laboris eu. Cillum voluptate nulla do
-                                commodo ipsum id et reprehenderit velit aliquip. Occaecat culpa duis amet eu
-                                reprehenderit ea. Enim incididunt aute do ipsum do amet Lorem tempor. Tempor elit dolor
-                                pariatur eiusmod elit amet ad ex aliqua ex non cupidatat ut. Culpa laborum fugiat
-                                deserunt ipsum culpa est et eiusmod. Consectetur nisi mollit ex enim non excepteur ipsum
-                                reprehenderit deserunt dolore veniam eu sit eu.</td>
+                            <th scope="row"></th>
+                            <td></td>
                             <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
                             </td>
                             <td>
@@ -348,7 +343,7 @@ export class listaSimpleP {
       `
     }
     let auxiliar = this.primero
-    while (auxiliar !== null){
+    while (auxiliar !== null) {
       newText += `
       <div class="table-responsive">
                 <table class="table table-bordered ">
@@ -420,7 +415,7 @@ export class listaSimpleP {
       while (actual.siguiente) {
         auxiliar = actual.siguiente
         while (auxiliar) {
-          if (auxiliar.dato.nombre_pelicula < actual.dato.nombre_pelicula) {
+          if (auxiliar.dato.id_pelicula < actual.dato.id_pelicula) {
             let temporal = actual.dato
             actual.dato = auxiliar.dato
             auxiliar.dato = temporal
@@ -442,7 +437,7 @@ export class listaSimpleP {
       while (actual.siguiente) {
         auxiliar = actual.siguiente
         while (auxiliar) {
-          if (auxiliar.dato.nombre_pelicula > actual.dato.nombre_pelicula) {
+          if (auxiliar.dato.id_pelicula > actual.dato.id_pelicula) {
             let temporal = actual.dato
             actual.dato = auxiliar.dato
             auxiliar.dato = temporal

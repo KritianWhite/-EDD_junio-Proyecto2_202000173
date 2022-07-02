@@ -6,6 +6,9 @@ import { Categoria, HashTable } from "./Categorias hash table.js";
 
 document.getElementById("btn-ordenar-ascendente").onclick = librosAscendente
 document.getElementById("btn-ordenar-descendente").onclick = librosDescendente
+document.getElementById("btn-inorden").onclick = ordenar_inOrden
+document.getElementById("btn-preorden").onclick = ordenar_preOrden
+document.getElementById("btn-postorden").onclick = ordenar_postOrden
 
 /*
 
@@ -48,7 +51,7 @@ function cargarPeliculas() {
     contenidoPeliculasJSON.forEach(e => {
         avl.insertar(e.id_pelicula, e.nombre_pelicula)
         listaPelis.agregarAlfinal(new Pelicula(e.id_pelicula,
-            e.nombre_pelicula, 
+            e.nombre_pelicula,
             e.descripcion, e.puntuacion_star,
             e.precio_Q))
     })
@@ -56,11 +59,11 @@ function cargarPeliculas() {
     //listaPelis.recorrerLista()
     listaPelis.mostrarDatos()
 }
-function librosAscendente(){
+function librosAscendente() {
     listaPelis.ordenamientoBurbuja_Ascendente()
     listaPelis.mostrarDatos()
 }
-function librosDescendente(){
+function librosDescendente() {
     listaPelis.ordenamientoBurbuja_Descendente()
     listaPelis.mostrarDatos()
 }
@@ -73,7 +76,7 @@ function librosDescendente(){
 */
 
 var lista_Simple = new listaSimple()
-var contenidoClientesJSON = []
+export var contenidoClientesJSON = []
 
 window.addEventListener("load", () => {
     document
@@ -119,7 +122,7 @@ function cargarClientes() {
 
     CARGA ACTORES
 
-    
+
 */
 var contenidoActoresJSOM = []
 var abb = new ArbolABB()
@@ -149,16 +152,37 @@ function abrirActoresJSON(evento) {
         alert("No se seleccionó ningún archivo")
     }
 }
-function cargarActores(){
+function cargarActores() {
     alert("Cargando actores...!")
+    let nuevoActor = document.getElementById("actores2")
     contenidoActoresJSOM.forEach(e => {
         abb.agregar(new Actor(e.dni,
             e.nombre_actor,
             e.correo,
             e.descripcion))
+
     })
-    //abb.InOrden(abb.raiz)
+    nuevoActor.innerHTML = abb.preOrden_Mostrar(abb.raiz)
+    //abb.preOrden(abb.raiz)
     abb.graficar(abb.raiz)
+}
+function ordenar_preOrden() {
+    let nuevoActor = document.getElementById("actores2")
+    nuevoActor.innerHTML = abb.preOrden_Mostrar(abb.raiz)
+    console.clear()
+    abb.preOrden(abb.raiz)
+}
+function ordenar_inOrden() {
+    let nuevoActor = document.getElementById("actores2")
+    nuevoActor.innerHTML = abb.inOrden_Mostrar(abb.raiz)
+    console.clear()
+    abb.InOrden(abb.raiz)
+}
+function ordenar_postOrden() {
+    let nuevoActor = document.getElementById("actores2")
+    nuevoActor.innerHTML = abb.postOrden_Mostrar(abb.raiz)
+    console.clear()
+    abb.postOrden(abb.raiz)
 }
 
 /**
@@ -170,9 +194,9 @@ function cargarActores(){
  */
 
 var contenidoCategoriasJSON = []
-var hastable = new HashTable(20, 8)
+var hastable = new HashTable(20,10)
 
-window.addEventListener("load", () =>{
+window.addEventListener("load", () => {
     document
         .getElementById("fichero-categorias")
         .addEventListener("change", abrirCategoriasJSON)
@@ -183,7 +207,11 @@ window.addEventListener("load", () => {
         .addEventListener("click", cargarCategorias)
 })
 
-function abrirCategoriasJSON(evento){
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
+function abrirCategoriasJSON(evento) {
     let archivo = evento.target.files[0]
     if (archivo) {
         let reader = new FileReader()
@@ -197,11 +225,27 @@ function abrirCategoriasJSON(evento){
         alert("No se seleccionó ningún archivo")
     }
 }
-function cargarCategorias(){
+function cargarCategorias() {
     alert("Cargando categorias...!")
+    let categoria = document.getElementById("categoriaaass")
+    let nuewText = ""
     contenidoCategoriasJSON.forEach(e => {
         //console.log(e.id_categoria, e.company)
-        hastable.insert(new Categoria(e.id_categoria, e.company))
+        hastable.set(e.id_categoria, e.company)
+
+    nuewText += `
+        <div class="col-md-3 col-sm-6">
+            <div class="our-team">
+                <div class="pic">
+                    <img src="./Img/img${random(1, 5)}.png">
+                </div>
+                <h3 class="title">${e.company}</h3>
+                <span class="post">${e.id_categoria}</span>
+            </div>
+        </div>
+    `
     })
-    hastable.graph()
+    hastable.draw()
+
+    categoria.innerHTML = nuewText
 }

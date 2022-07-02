@@ -218,6 +218,7 @@ export class listaSimple {
 
         cadena += "}";
         console.log(cadena);
-        d3.select("#linkedlist").graphviz().width("100%").renderDot(cadena);
+        d3.select("#linkedlist").graphviz().zoom(false).renderDot(cadena);
+        d3.select("#linkedlist2").graphviz().width("100%").zoom(false).fit(true).renderDot(cadena);
     }
 }
