@@ -327,10 +327,10 @@ export class listaSimpleP {
                         <tr>
                             <th scope="row"></th>
                             <td></td>
-                            <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
+                            <td><button id="mas-informacion" type="button" class="btn btn-primary btn-rounded   "> Más información </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success btn-rounded   "> <span
+                                <button type="button" class="btn btn-success btn-rounded  "> <span
                                         class="spinner-border spinner-border-sm" role="status"
                                         aria-hidden="true"></span> Alquilar pelicula </button>
                                 <br>
@@ -359,7 +359,7 @@ export class listaSimpleP {
                         <tr>
                             <th scope="row">${auxiliar.dato.nombre_pelicula}</th>
                             <td>${auxiliar.dato.descripcion}</td>
-                            <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
+                            <td><button type="button" class="btn btn-primary btn-rounded  " value="${(auxiliar.dato.id_pelicula)}"> Más información </button>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-success btn-rounded   "> <span
@@ -399,12 +399,12 @@ export class listaSimpleP {
     }
     let auxiliar = this.primero
     while (auxiliar != null) {
-      if (auxiliar.dato.nombre === dato_) {
-        console.log((auxiliar.dato.toString()) + ", nombre encontrado.")
+      if (auxiliar.dato.id_pelicula === dato_) {
+        return auxiliar.dato
       }
       auxiliar = auxiliar.siguiente
     }
-    return dato_ + ", dato no encontrado"
+    return null
   }
 
   ordenamientoBurbuja_Ascendente() {

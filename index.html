@@ -43,7 +43,7 @@
 <body>
 
     <!-- Area para el login-->
-    <div id="login" style="display: block;">
+    <div id="login" style="display: none;">
 
         <section class="vh-100">
             <div class="container-fluid h-custom">
@@ -129,7 +129,7 @@
 
 
 
-    <div id="administrador" style="display: none;">
+    <div id="administrador" style="display: block;">
 
         <section class="pricing-table">
             <div class="container">
@@ -239,7 +239,7 @@
                     <h1>PELICULAS - AVL</h1>
                 </div>
                 <div id="arbol-AVL"></div>
-                
+
             </div>
             <button type="button" class="btn btn-outline-success alineacion" id="btn-download-avl">Download</button>
         </div>
@@ -262,7 +262,8 @@
                 </div>
                 <div id="linkedlist2"></div>
             </div>
-            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-linkedlist">Download</button>
+            <button type="button" class="btn btn-outline-success alineacion"
+                id="btn-download-linkedlist">Download</button>
         </div>
 
     </div>
@@ -292,7 +293,8 @@
                 <div id="hash-table"></div>
             </div>
 
-            <button type="button" class="btn btn-outline-success alineacion" id="btn-download-hashtable">Download</button>
+            <button type="button" class="btn btn-outline-success alineacion"
+                id="btn-download-hashtable">Download</button>
         </div>
 
     </div>
@@ -333,7 +335,7 @@
     </div>
 
 
-    <div id="usuario" style="display: none;">
+    <div id="usuario" style="display: block;">
         <div class="Titulos">
             <h1>MOVIECATS</h1>
             <button type="button" class="btn btn-outline-danger btn-rounded   " id="btn-ordenar-ascendente"
@@ -359,7 +361,7 @@
                             <td><button type="button" class="btn btn-primary btn-rounded   "> Más información </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success btn-rounded   "> <span
+                                <button type="button" class="btn btn-success btn-rounded "> <span
                                         class="spinner-border spinner-border-sm" role="status"
                                         aria-hidden="true"></span> Alquilar pelicula </button>
                                 <br>
@@ -372,6 +374,33 @@
         </div>
 
     </div>
+
+    <div class="vistasx" id="mostrar-movie" style="display: block;">
+        <div class="Titulos">
+            <h1>NOMBRE PELICULA - ID</h1>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <td>
+                            Descripcion:
+
+                            <br>
+                            <p>Costo: Q 000.00</p>
+                            <button type="button" class="btn btn-success btn-rounded "> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Alquilar pelicula </button>
+
+                        </td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
 
     <div id="actores" style="display: none;">
         <div class="Titulos">
@@ -445,7 +474,7 @@
     <!-- importación de los archivos de la carpeta de JAvaScript -->
     <script type="module" src="./JavaScript/Carga masiva.js"></script>
     <script type="module" src="./JavaScript/main.js"></script>
-
+    <script type="text/javascript" src="./JavaScript/prueba.js"></script>
 
     <!-- importaciones del d3 graphviz -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -460,6 +489,7 @@
     <script src="https://superal.github.io/canvas2image/canvas2image.js "></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </body>
 

@@ -3,12 +3,15 @@ import { Cliente, listaSimple } from "./Clientes lista simple.js";
 import { Actor, ArbolABB } from "./Actores ABB.js";
 import { Categoria, HashTable } from "./Categorias hash table.js";
 
-
+/** Botones para el ordenamiento de libros */
 document.getElementById("btn-ordenar-ascendente").onclick = librosAscendente
 document.getElementById("btn-ordenar-descendente").onclick = librosDescendente
+
+/** Botones para el ordenamiento de los acatores */
 document.getElementById("btn-inorden").onclick = ordenar_inOrden
 document.getElementById("btn-preorden").onclick = ordenar_preOrden
 document.getElementById("btn-postorden").onclick = ordenar_postOrden
+
 
 /*
 
@@ -58,7 +61,36 @@ function cargarPeliculas() {
     avl.graficar(avl.root)
     //listaPelis.recorrerLista()
     listaPelis.mostrarDatos()
+
+
 }
+
+
+
+
+let padre = document.getElementById("vista2-peliculas");
+padre.addEventListener("click", (e) => {
+    if (e.target.type === "button" && e.target.value){
+        let idPeli = e.target.value
+        let datoBuscar = listaPelis.buscarDato(parseInt(idPeli))
+        if (datoBuscar !== null){
+            let newElement = document.getElementById("")
+            let newText = ""
+        }else{
+            alert("Ocurrió algún error")
+        }
+
+        console.log(e.target.value)
+    }
+})
+
+
+padre.onclick = function (event) {
+    let target = event.target;
+    console.log(target);
+}
+
+
 function librosAscendente() {
     listaPelis.ordenamientoBurbuja_Ascendente()
     listaPelis.mostrarDatos()
@@ -67,6 +99,10 @@ function librosDescendente() {
     listaPelis.ordenamientoBurbuja_Descendente()
     listaPelis.mostrarDatos()
 }
+
+
+
+
 
 
 /*
@@ -194,7 +230,7 @@ function ordenar_postOrden() {
  */
 
 var contenidoCategoriasJSON = []
-var hastable = new HashTable(20,10)
+var hastable = new HashTable(20, 10)
 
 window.addEventListener("load", () => {
     document
@@ -233,7 +269,7 @@ function cargarCategorias() {
         //console.log(e.id_categoria, e.company)
         hastable.set(e.id_categoria, e.company)
 
-    nuewText += `
+        nuewText += `
         <div class="col-md-3 col-sm-6">
             <div class="our-team">
                 <div class="pic">
