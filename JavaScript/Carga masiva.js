@@ -2,6 +2,9 @@ import { Pelicula, AVL, listaSimpleP } from "./Peliculas arbol AVL.js";
 import { Cliente, listaSimple } from "./Clientes lista simple.js";
 import { Actor, ArbolABB } from "./Actores ABB.js";
 import { Categoria, HashTable } from "./Categorias hash table.js";
+import { userObtenido } from "./main.js";
+import { Comentario, listaSimpleC } from "./Comentarios lista.js";
+
 
 /** Botones para el ordenamiento de libros */
 document.getElementById("btn-ordenar-ascendente").onclick = librosAscendente
@@ -11,6 +14,8 @@ document.getElementById("btn-ordenar-descendente").onclick = librosDescendente
 document.getElementById("btn-inorden").onclick = ordenar_inOrden
 document.getElementById("btn-preorden").onclick = ordenar_preOrden
 document.getElementById("btn-postorden").onclick = ordenar_postOrden
+
+document.getElementById("btn-comentar").onclick = comentar
 
 
 /*
@@ -66,20 +71,20 @@ function cargarPeliculas() {
 }
 
 
-
-
+let idPeli
 let padre = document.getElementById("vista2-peliculas");
 padre.addEventListener("click", (e) => {
-    if (e.target.type === "button" && e.target.value){
+    if (e.target.type === "button" && e.target.value) {
         let newElement = document.getElementById("mostrar2-movie")
         let newText = ""
 
-        let idPeli = e.target.value
+        idPeli = e.target.value
         let datoBuscar = listaPelis.buscarDato(parseInt(idPeli))
 
-        if (datoBuscar !== null){
+        if (datoBuscar !== null) {
             document.getElementById("usuario").style.display = "none"
             document.getElementById("mostrar-movie").style.display = "block"
+            document.getElementById("mostrar-comentario").style.display = "block"
             //console.log(datoBuscar.nombre_pelicula, datoBuscar.id_pelicula, datoBuscar.descripcion)
 
             newText += `
@@ -99,16 +104,16 @@ padre.addEventListener("click", (e) => {
                                 <button type="button" class="btn btn-success btn-rounded "> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Alquilar pelicula </button>
     
                             </td>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
             `
 
             newElement.innerHTML = newText
 
-        }else{
+        } else {
             alert("Ocurrió algún error")
         }
     }
@@ -121,6 +126,40 @@ function librosAscendente() {
 function librosDescendente() {
     listaPelis.ordenamientoBurbuja_Descendente()
     listaPelis.mostrarDatos()
+}
+
+
+function comentar() {
+    let comentario = ""
+    comentario = document.getElementById("area-comentario").value
+    let usuario = ""
+    usuario = userObtenido
+    let pelicula = idPeli
+
+    let peliculaEncontrada = listaPelis.buscarDato(parseInt(pelicula))
+    if (peliculaEncontrada !== null) {
+        peliculaEncontrada._comentarios.push(new Comentario(pelicula, usuario, comentario))
+
+        let newElement = document.getElementById("publicar-comentario")
+        let newText = ""
+        newText += `
+                <div class="table-responsive">
+                    <table class="table table-bordered ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    El usuario ${usuario} comentó en la pelicula ${peliculaEncontrada.nombre_pelicula} lo siguiente: ${comentario}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `
+
+        newElement.innerHTML += newText
+
+    }
+    document.getElementById("area-comentario").value = ""
 }
 
 

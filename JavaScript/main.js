@@ -27,6 +27,9 @@ document.getElementById("vista-categorias").onclick = mostrarCategorias
 
 var user, pass, check, bolean
 
+
+var userObtenido
+
 function login() {
     bolean = false
     user = document.getElementById("usser").value
@@ -38,6 +41,7 @@ function login() {
     }
 
     if (user === "EDD" && pass === "123" && bolean === true) {
+        userObtenido = user
         document.getElementById("login").style.display = "none"
         document.getElementById("navbar-administrador").style.display = "block"
         document.getElementById("administrador").style.display = "block"
@@ -51,8 +55,10 @@ function login() {
         document.getElementById("actores").style.display = "none"
         document.getElementById("categorias").style.display = "none"
         document.getElementById("mostrar-movie").style.display = "none"
+        document.getElementById("mostrar-comentario").style.display = "none"
     }
     else if (user === "User1" && pass === "123" && bolean === false) {
+        userObtenido = user
         document.getElementById("login").style.display = "none"
         document.getElementById("navbar-administrador").style.display = "none"
         document.getElementById("administrador").style.display = "none"
@@ -66,11 +72,13 @@ function login() {
         document.getElementById("actores").style.display = "none"
         document.getElementById("categorias").style.display = "none"
         document.getElementById("mostrar-movie").style.display = "none"
+        document.getElementById("mostrar-comentario").style.display = "none"
 
     }
     else {
         contenidoClientesJSON.forEach(e => {
             if (user === e.nombre_usuario && pass === e.contrasenia) {
+                userObtenido = user
                 document.getElementById("login").style.display = "none"
                 document.getElementById("navbar-administrador").style.display = "none"
                 document.getElementById("administrador").style.display = "none"
@@ -84,6 +92,7 @@ function login() {
                 document.getElementById("actores").style.display = "none"
                 document.getElementById("categorias").style.display = "none"
                 document.getElementById("mostrar-movie").style.display = "none"
+                document.getElementById("mostrar-comentario").style.display = "none"
             }
         })
         alert("¡Credenciales incorrectas!")
@@ -108,6 +117,7 @@ function cerrarSesion() {
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 
     document.getElementById("usser").value = ""
@@ -120,7 +130,7 @@ function cerrarSesion() {
  * 
  */
 
-function mostrarCargaMasiva(){
+function mostrarCargaMasiva() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "block"
@@ -134,10 +144,11 @@ function mostrarCargaMasiva(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarGrafo_AVL(){
+function mostrarGrafo_AVL() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "none"
@@ -151,10 +162,11 @@ function mostrarGrafo_AVL(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarGrafo_LinkedList(){
+function mostrarGrafo_LinkedList() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "none"
@@ -168,10 +180,11 @@ function mostrarGrafo_LinkedList(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarGrafo_ABB(){
+function mostrarGrafo_ABB() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "none"
@@ -185,10 +198,11 @@ function mostrarGrafo_ABB(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarGrafo_HashTable(){
+function mostrarGrafo_HashTable() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "none"
@@ -202,10 +216,11 @@ function mostrarGrafo_HashTable(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarBlockChain(){
+function mostrarBlockChain() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "block"
     document.getElementById("administrador").style.display = "none"
@@ -219,6 +234,7 @@ function mostrarBlockChain(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 /**
@@ -226,7 +242,7 @@ function mostrarBlockChain(){
  * Mostrando vistas de la navbar de Usuario
  * 
  */
-function mostrarPeliculas(){
+function mostrarPeliculas() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "none"
     document.getElementById("administrador").style.display = "none"
@@ -240,10 +256,11 @@ function mostrarPeliculas(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarActores(){
+function mostrarActores() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "none"
     document.getElementById("administrador").style.display = "none"
@@ -257,10 +274,11 @@ function mostrarActores(){
     document.getElementById("actores").style.display = "block"
     document.getElementById("categorias").style.display = "none"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 
-function mostrarCategorias(){
+function mostrarCategorias() {
     document.getElementById("login").style.display = "none"
     document.getElementById("navbar-administrador").style.display = "none"
     document.getElementById("administrador").style.display = "none"
@@ -274,6 +292,7 @@ function mostrarCategorias(){
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "block"
     document.getElementById("mostrar-movie").style.display = "none"
+    document.getElementById("mostrar-comentario").style.display = "none"
 
 }
 /**
@@ -284,21 +303,21 @@ function mostrarCategorias(){
  * 
  */
 
- function descargarGrafo_AVL() {
+function descargarGrafo_AVL() {
     html2canvas($('#descargar-AVL')[0]).then(function (canvas) {
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });
 }
 
-function descargarGrafo_LinkedList(){
+function descargarGrafo_LinkedList() {
     html2canvas($('#descargar-linkedlist')[0]).then(function (canvas) {
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });
 }
 
-function descargarGrafo_ABB(){
+function descargarGrafo_ABB() {
     html2canvas($('#descargar-ABB')[0]).then(function (canvas) {
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
@@ -306,13 +325,13 @@ function descargarGrafo_ABB(){
 }
 
 
-function descargarGrafo_HashTable(){
+function descargarGrafo_HashTable() {
     html2canvas($('#descargar-HashTable')[0]).then(function (canvas) {
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });
 }
 
-
+export { userObtenido }
 
 

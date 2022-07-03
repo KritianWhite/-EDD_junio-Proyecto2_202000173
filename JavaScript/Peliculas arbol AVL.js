@@ -11,6 +11,7 @@ export class Pelicula {
     this._descripcion = descripcion
     this._puntuacion_star = puntuacion_star
     this._precio_Q = precio_Q
+    this._comentarios = []
   }
   get id_pelicula() {
     return this._id_pelicula
