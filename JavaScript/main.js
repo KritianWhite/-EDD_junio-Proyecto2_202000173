@@ -50,6 +50,7 @@ function login() {
         document.getElementById("usuario").style.display = "none"
         document.getElementById("actores").style.display = "none"
         document.getElementById("categorias").style.display = "none"
+        document.getElementById("mostrar-movie").style.display = "none"
     }
     else if (user === "User1" && pass === "123" && bolean === false) {
         document.getElementById("login").style.display = "none"
@@ -64,6 +65,7 @@ function login() {
         document.getElementById("usuario").style.display = "block"
         document.getElementById("actores").style.display = "none"
         document.getElementById("categorias").style.display = "none"
+        document.getElementById("mostrar-movie").style.display = "none"
 
     }
     else {
@@ -81,6 +83,7 @@ function login() {
                 document.getElementById("usuario").style.display = "block"
                 document.getElementById("actores").style.display = "none"
                 document.getElementById("categorias").style.display = "none"
+                document.getElementById("mostrar-movie").style.display = "none"
             }
         })
         alert("¡Credenciales incorrectas!")
@@ -104,6 +107,8 @@ function cerrarSesion() {
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 
     document.getElementById("usser").value = ""
     document.getElementById("password").value = ""
@@ -128,6 +133,8 @@ function mostrarCargaMasiva(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarGrafo_AVL(){
@@ -143,6 +150,8 @@ function mostrarGrafo_AVL(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarGrafo_LinkedList(){
@@ -158,6 +167,8 @@ function mostrarGrafo_LinkedList(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarGrafo_ABB(){
@@ -173,6 +184,8 @@ function mostrarGrafo_ABB(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarGrafo_HashTable(){
@@ -188,6 +201,8 @@ function mostrarGrafo_HashTable(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarBlockChain(){
@@ -203,6 +218,8 @@ function mostrarBlockChain(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 /**
  * 
@@ -222,6 +239,8 @@ function mostrarPeliculas(){
     document.getElementById("usuario").style.display = "block"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarActores(){
@@ -237,6 +256,8 @@ function mostrarActores(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "block"
     document.getElementById("categorias").style.display = "none"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 
 function mostrarCategorias(){
@@ -252,6 +273,8 @@ function mostrarCategorias(){
     document.getElementById("usuario").style.display = "none"
     document.getElementById("actores").style.display = "none"
     document.getElementById("categorias").style.display = "block"
+    document.getElementById("mostrar-movie").style.display = "none"
+
 }
 /**
  * 

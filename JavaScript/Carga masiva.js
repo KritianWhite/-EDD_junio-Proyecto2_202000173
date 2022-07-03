@@ -71,25 +71,48 @@ function cargarPeliculas() {
 let padre = document.getElementById("vista2-peliculas");
 padre.addEventListener("click", (e) => {
     if (e.target.type === "button" && e.target.value){
+        let newElement = document.getElementById("mostrar2-movie")
+        let newText = ""
+
         let idPeli = e.target.value
         let datoBuscar = listaPelis.buscarDato(parseInt(idPeli))
+
         if (datoBuscar !== null){
-            let newElement = document.getElementById("")
-            let newText = ""
+            document.getElementById("usuario").style.display = "none"
+            document.getElementById("mostrar-movie").style.display = "block"
+            //console.log(datoBuscar.nombre_pelicula, datoBuscar.id_pelicula, datoBuscar.descripcion)
+
+            newText += `
+            <div class="Titulos">
+                <h1>${datoBuscar.nombre_pelicula} - ${datoBuscar.id_pelicula}</h1>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered ">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Descripcion: ${datoBuscar.descripcion}
+    
+                                <br>
+                                <p>Costo: Q ${datoBuscar.precio_Q}</p>
+                                <button type="button" class="btn btn-success btn-rounded "> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Alquilar pelicula </button>
+    
+                            </td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            `
+
+            newElement.innerHTML = newText
+
         }else{
             alert("Ocurrió algún error")
         }
-
-        console.log(e.target.value)
     }
 })
-
-
-padre.onclick = function (event) {
-    let target = event.target;
-    console.log(target);
-}
-
 
 function librosAscendente() {
     listaPelis.ordenamientoBurbuja_Ascendente()
@@ -99,10 +122,6 @@ function librosDescendente() {
     listaPelis.ordenamientoBurbuja_Descendente()
     listaPelis.mostrarDatos()
 }
-
-
-
-
 
 
 /*
@@ -206,19 +225,19 @@ function ordenar_preOrden() {
     let nuevoActor = document.getElementById("actores2")
     nuevoActor.innerHTML = abb.preOrden_Mostrar(abb.raiz)
     console.clear()
-    abb.preOrden(abb.raiz)
+    //abb.preOrden(abb.raiz)
 }
 function ordenar_inOrden() {
     let nuevoActor = document.getElementById("actores2")
     nuevoActor.innerHTML = abb.inOrden_Mostrar(abb.raiz)
     console.clear()
-    abb.InOrden(abb.raiz)
+    //abb.InOrden(abb.raiz)
 }
 function ordenar_postOrden() {
     let nuevoActor = document.getElementById("actores2")
     nuevoActor.innerHTML = abb.postOrden_Mostrar(abb.raiz)
     console.clear()
-    abb.postOrden(abb.raiz)
+    //abb.postOrden(abb.raiz)
 }
 
 /**
