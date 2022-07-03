@@ -187,16 +187,6 @@ class HashElement {
 }
 */
 
-
-
-
-
-
-
-
-
-
-
 class Dic {
     constructor(llave, valor) {
         this._llave = llave;
